@@ -4,11 +4,12 @@
         "es2021": true
     },
     "extends": [
-        "standard",
         "plugin:react/recommended",
+        "standard",
         "plugin:react-hooks/recommended",
         "plugin:prettier/recommended"
     ],
+    "overrides": [],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
@@ -24,16 +25,36 @@
             {
                 "printWidth": 80,
                 "tabWidth": 2,
-                "singleQuote": true,
-                "trailingComma": "none",
+                "singleQuote": true, // aspas simples
+                "trailingComma": "none", // virgula no fim da linha
                 "arrowParens": "always",
-                "semi": false,
+                "semi": false, // ponto e virgula no fim da linha
                 "endOfLine": "auto"
             }
         ],
         "react/react-in-jsx-scope": "off",
         "react/prop-types": "off",
-        "react/hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "import-helpers/order-imports": [
+            "warn",
+            {
+                "newlinesBetween": "always", // new line between groups
+                "groups": [
+                    "/^react/",
+                    "module",
+                    "/^@shared/",
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
+            }
+        ]
     }
 }
