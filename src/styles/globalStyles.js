@@ -8,6 +8,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     outline: none;
     text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {

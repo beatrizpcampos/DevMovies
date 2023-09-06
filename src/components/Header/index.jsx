@@ -1,10 +1,24 @@
+import { Link } from 'react-router-dom'
+
 import Logo from '../../assets/logo.png'
+import { Container, Menu, Li } from './styles'
 
 function Header() {
   return (
-    <div>
+    <Container>
       <img src={Logo} alt="logo-dev-movies" />
-    </div>
+      <Menu>
+        <Li>
+          <Link to="/">Home</Link>
+        </Li>
+        <Li>
+          <Link to="/filmes">Filmes</Link>
+        </Li>
+        <Li>
+          <Link to="/series">Series</Link>
+        </Li>
+      </Menu>
+    </Container>
   )
 }
 
