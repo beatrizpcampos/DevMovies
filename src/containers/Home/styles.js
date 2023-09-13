@@ -33,22 +33,23 @@ export const Info = styled.div`
   width: 50%;
 
   h1 {
-    font-size: 5rem;
-    font-weight: 700;
+    font-size: 50px;
+    font-weight: 600;
     color: #ffffff;
   }
 
   p {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 350;
     color: #ffffff;
   }
 `
 
 export const Poster = styled.div`
   z-index: 2;
+  margin-top: 30px;
   img {
-    width: 400px;
+    width: 350px;
     border-radius: 30px;
   }
 `
