@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import Slider from '../../components/Slider'
-import api from '../../services/api'
+import {
+  getMovies,
+  getTopMovies,
+  getTopSeries,
+  getUpcoming
+} from '../../services/getData'
 import { getImages } from '../../utils/getImages'
 import { Background, Info, Poster, Container, ContainerButtons } from './styles'
 
@@ -13,47 +19,17 @@ function Home() {
   const [upcoming, setUpcoming] = useState()
   const [topMovies, setTopMovies] = useState()
   const [topSeries, setTopSeries] = useState()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    async function getMovies() {
-      const {
-        data: { results }
-      } = await api.get('/movie/popular')
-
-      setMovie(results[0])
+    async function getAllData() {
+      setMovie(await getMovies())
+      setUpcoming(await getUpcoming())
+      setTopMovies(await getTopMovies())
+      setTopSeries(await getTopSeries())
     }
 
-    async function getUpcoming() {
-      const {
-        data: { results }
-      } = await api.get('/movie/upcoming')
-
-      console.log(results)
-      setUpcoming(results)
-    }
-
-    async function getTopMovies() {
-      const {
-        data: { results }
-      } = await api.get('/movie/top_rated')
-
-      console.log(results)
-      setTopMovies(results)
-    }
-
-    async function getTopSeries() {
-      const {
-        data: { results }
-      } = await api.get('/tv/top_rated')
-
-      console.log(results)
-      setTopSeries(results)
-    }
-
-    getMovies()
-    getUpcoming()
-    getTopMovies()
-    getTopSeries()
+    getAllData()
   }, [])
 
   return (
@@ -68,7 +44,9 @@ function Home() {
               <h1>{movie.title}</h1>
               <p>{movie.overview}</p>
               <ContainerButtons>
-                <Button red>Assista agora</Button>
+                <Button red onClick={() => navigate(`/detalhe/${movie.id}`)}>
+                  Assista agora
+                </Button>
                 <Button onClick={() => setShowModal(true)}>
                   Assista o Trailer
                 </Button>
