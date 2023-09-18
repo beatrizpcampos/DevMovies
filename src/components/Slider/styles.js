@@ -7,7 +7,7 @@ export const Container = styled.div`
   h2 {
     color: #ffffff;
     font-size: 24px;
-    margin: 50px 0 20px 20px;
+    margin: 20px 0px 20px 20px;
   }
   .swiper-wrapper {
     display: flex;
