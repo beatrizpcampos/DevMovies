@@ -4,7 +4,6 @@ import Card from '../Card'
 import { Container } from './styles'
 
 function Slider({ info, title }) {
-  console.log(info, title)
   return (
     <Container>
       <h2>{title}</h2>
